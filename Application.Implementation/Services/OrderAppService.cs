@@ -11,11 +11,10 @@ namespace Application.Implementation.Services
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IProductRepository _productRepository;
-        private readonly ILogger<OrderAppService> _logger;
-        public OrderAppService(IOrderRepository orderRepository, ILogger<OrderAppService> logger, IProductRepository productRepository)
+        
+        public OrderAppService(IOrderRepository orderRepository, IProductRepository productRepository)
         {
-            _orderRepository = orderRepository;
-            _logger = logger;
+            _orderRepository = orderRepository;            
             _productRepository = productRepository;
         }
 

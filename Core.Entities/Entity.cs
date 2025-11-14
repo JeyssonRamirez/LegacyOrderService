@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace LegacyOrderService.Models
 {
     /// <summary>
@@ -8,6 +11,8 @@ namespace LegacyOrderService.Models
         /// <summary>
         /// Table ID
         /// </summary>
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         /// <summary>
         /// Creation Date
