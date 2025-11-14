@@ -2,6 +2,7 @@
 using Core.DataTransferObject;
 using Core.DataTransferObject.Order;
 using Core.GlobalRepository;
+using Crosscutting.Util.Extension;
 using LegacyOrderService.Models;
 using Microsoft.Extensions.Logging;
 
@@ -82,6 +83,30 @@ namespace Application.Implementation.Services
                     break;
             }
 
+            return r;
+        }
+
+        public async Task<BaseApiResult> UpdateDatabase()
+        {
+            var r = new BaseApiResult();
+            try
+            {
+                r.Success = true;
+                r.Message = _orderRepository.ApplyMigrations();
+                r.MessageCode = MessageCodeType.OK;
+            }
+            catch (Exception ex)
+            {
+
+                r.Success = false;
+#if Production
+				r.Message = "An unknown error occurred.";
+#else
+                r.Message = ex.GetDevExceptionMessage();
+#endif
+                r.MessageCode = MessageCodeType.InternalServerError;
+                
+            }
             return r;
         }
     }

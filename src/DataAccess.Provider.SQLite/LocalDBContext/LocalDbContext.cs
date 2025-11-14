@@ -21,6 +21,14 @@ namespace DataAccess.Provider.SQLite.LocalKioskDBContext
                 .ValueGeneratedOnAdd()
                 .HasAnnotation("Sqlite:Autoincrement", true);
 
+            // Seeding Products
+            modelBuilder.Entity<Product>().HasData(
+                new Product { Id = 1, Name = "Widget", Price = 12.99m, Status = StatusType.Active, RegistrationDate = DateTime.UtcNow },
+                new Product { Id = 2, Name = "Gadget", Price = 15.49m, Status = StatusType.Active, RegistrationDate = DateTime.UtcNow },
+                new Product { Id = 3, Name = "Doohickey", Price = 8.75m, Status = StatusType.Inactive, RegistrationDate = DateTime.UtcNow }
+            );
+
+
             base.OnModelCreating(modelBuilder);
         }
 

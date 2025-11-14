@@ -10,7 +10,7 @@ namespace DataAccess.Provider.SQLite.LocalKioskDBContext
         public LocalDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<LocalDbContext>();
-            optionsBuilder.UseSqlite("Data Source=orders.db");
+            optionsBuilder.UseSqlite("Data Source=../LegacyOrderService/orders.db");
 
             return new LocalDbContext(optionsBuilder.Options,null);
         }

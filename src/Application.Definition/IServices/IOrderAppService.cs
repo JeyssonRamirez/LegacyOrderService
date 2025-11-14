@@ -8,5 +8,7 @@ namespace Application.Definition.IServices
     {
         Task<RecordIdApiResult> ModifyOrder(ModifyOrderDTO model, CancellationToken cancellationToken = default);
         Task<RecordApiResult<Product>> GetProductByName(string productName, CancellationToken cancellationToken = default);
+
+        Task<BaseApiResult> UpdateDatabase();
     }
 }
