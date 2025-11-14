@@ -5,9 +5,9 @@ using LegacyOrderService.Models;
 
 namespace DataAccess.Provider.SQLite.Repositories
 {
-    public class OrderRepository : GenericRepository<Order>, IOrderRepository
+    public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
-        public OrderRepository(LocalDbContext context) : base(context, true)
+        public ProductRepository(LocalDbContext context) : base(context, true)
         {
         }
 

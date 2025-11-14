@@ -4,11 +4,6 @@ using DataAccess.Provider.SQLite.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Provider.SQLite.DI
 {
@@ -22,7 +17,8 @@ namespace DataAccess.Provider.SQLite.DI
                 options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             });
             //services.AddDbContext<LocalKioskDbContext>();
-            services.AddScoped<IOrderRepository, OrderRepository>();            
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             return services;
         }
     }
