@@ -1,16 +1,19 @@
 ﻿using LegacyOrderService.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace DataAccess.Provider.SQLite.LocalKioskDBContext
 {
-    public class LocalKioskDbContext : DbContext
+    public class LocalDbContext : DbContext
     {
-        public LocalKioskDbContext(DbContextOptions<LocalKioskDbContext> options)
+        private readonly IConfiguration _configuration;
+        public LocalDbContext(DbContextOptions<LocalDbContext> options, IConfiguration configuration)
         : base(options)
         {
+            _configuration = configuration;
         }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
         
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

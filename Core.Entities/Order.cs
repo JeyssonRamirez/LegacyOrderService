@@ -7,7 +7,8 @@ namespace LegacyOrderService.Models
         public string ProductName;
         public int Quantity;
         public decimal Price;
-        public long ProductId { get; set; }
+        public long? ProductId { get; set; }
+        public Product Product { get; set; }
     }
 
     public class Product:Entity
@@ -15,6 +16,8 @@ namespace LegacyOrderService.Models
         
         public string Name { get; set; }
         public decimal Price { get; set; }
+
+        public List<Order> Orders { get; set; }
     }
 
 

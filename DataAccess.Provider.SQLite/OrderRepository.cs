@@ -7,7 +7,7 @@ namespace DataAccess.Provider.SQLite
 {
     public class OrderRepository  : GenericRepository<Order>, IOrderRepository
     {
-        public OrderRepository(LocalKioskDbContext context) : base(context, true)
+        public OrderRepository(LocalDbContext context) : base(context, true)
         {
         }
 

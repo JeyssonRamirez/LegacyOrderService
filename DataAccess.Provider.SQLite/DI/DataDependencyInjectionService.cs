@@ -1,5 +1,6 @@
 ﻿using Core.GlobalRepository;
 using DataAccess.Provider.SQLite.LocalKioskDBContext;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -14,7 +15,12 @@ namespace DataAccess.Provider.SQLite.DI
     {
         public static IServiceCollection AddSQLiteData(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<LocalKioskDbContext>();
+            // EF Core with SQLite
+            services.AddDbContext<LocalDbContext>(options =>
+            {
+                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
+            });
+            //services.AddDbContext<LocalKioskDbContext>();
             services.AddScoped<IOrderRepository, OrderRepository>();            
             return services;
         }
