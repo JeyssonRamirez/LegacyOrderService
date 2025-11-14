@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyOrderService", "LegacyOrderService.csproj", "{0DE7CA35-977E-44D0-B7F8-A2DD544D8711}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation", "1.Presentation", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{718F2C81-83BD-45A5-987C-4CF41B412E12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Core", "3.Core", "{F2BFB318-1FC9-4A0A-A81C-55B63200518F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Data", "4.Data", "{FF276435-FFCC-46EC-B084-5D2F266AA8AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Crosscutting", "5.Crosscutting", "{7097B630-D081-4DB6-AAC9-0AAA69FCDC6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DE7CA35-977E-44D0-B7F8-A2DD544D8711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE7CA35-977E-44D0-B7F8-A2DD544D8711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE7CA35-977E-44D0-B7F8-A2DD544D8711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE7CA35-977E-44D0-B7F8-A2DD544D8711}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DE7CA35-977E-44D0-B7F8-A2DD544D8711} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {566BD0F6-DB7D-4310-BD76-F78B969D9352}
+	EndGlobalSection
+EndGlobal
