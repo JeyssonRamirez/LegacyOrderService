@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dtos", "Dtos", "{DB71FABE-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{8748FD2A-46FA-4E2E-BEBA-7E85560957B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyOrderService", "LegacyOrderService\LegacyOrderService.csproj", "{FAFC520A-047F-75A3-0EAB-1A678B7F197F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.LegacyOrderConsole", "LegacyOrderService\Presentation.LegacyOrderConsole.csproj", "{FAFC520A-047F-75A3-0EAB-1A678B7F197F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Definition", "Application.Definition\Application.Definition.csproj", "{34789859-0FCE-B0AC-C120-FDCAC1D6CF9E}"
 EndProject
