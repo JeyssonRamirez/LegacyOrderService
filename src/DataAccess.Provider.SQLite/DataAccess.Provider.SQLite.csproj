@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Core.GlobalRepository\Core.GlobalRepository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="orders.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

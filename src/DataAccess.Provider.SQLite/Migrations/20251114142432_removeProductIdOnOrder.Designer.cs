@@ -3,6 +3,7 @@ using System;
 using DataAccess.Provider.SQLite.LocalKioskDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Provider.SQLite.Migrations
 {
     [DbContext(typeof(LocalDbContext))]
-    partial class LocalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251114142432_removeProductIdOnOrder")]
+    partial class removeProductIdOnOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.22");
@@ -86,7 +89,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                             Id = 1L,
                             Name = "Widget",
                             Price = 12.99m,
-                            RegistrationDate = new DateTime(2025, 11, 14, 14, 28, 3, 888, DateTimeKind.Utc).AddTicks(6224),
+                            RegistrationDate = new DateTime(2025, 11, 14, 14, 24, 32, 63, DateTimeKind.Utc).AddTicks(7626),
                             Status = 0
                         },
                         new
@@ -94,7 +97,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                             Id = 2L,
                             Name = "Gadget",
                             Price = 15.49m,
-                            RegistrationDate = new DateTime(2025, 11, 14, 14, 28, 3, 888, DateTimeKind.Utc).AddTicks(6226),
+                            RegistrationDate = new DateTime(2025, 11, 14, 14, 24, 32, 63, DateTimeKind.Utc).AddTicks(7629),
                             Status = 0
                         },
                         new
@@ -102,7 +105,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                             Id = 3L,
                             Name = "Doohickey",
                             Price = 8.75m,
-                            RegistrationDate = new DateTime(2025, 11, 14, 14, 28, 3, 888, DateTimeKind.Utc).AddTicks(6228),
+                            RegistrationDate = new DateTime(2025, 11, 14, 14, 24, 32, 63, DateTimeKind.Utc).AddTicks(7630),
                             Status = 2
                         });
                 });

@@ -9,12 +9,12 @@ namespace Core.DataTransferObject.Order
         [ConditionalValidation("ActionType", ActionType.Update, ActionType.Delete)]
         public long? Id { get; set; }
 
-        public string CustomerName;
-        public string ProductName;
-        public int Quantity;
-        public double Price;
-        public decimal NewPrice;
-        public decimal Total;
+        public string CustomerName { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal NewPrice { get; set; }
+        public long ProductId { get; set; }
 
         /// <summary>
         /// Ignore this property set automatically 
@@ -22,6 +22,6 @@ namespace Core.DataTransferObject.Order
         [IgnoredForSwaggerAttribute]
         [SwaggerSchema(Description = "Action type please Ignore", ReadOnly = true)]
         public ActionType ActionType { get; set; }
-        public long ProductId { get; set; }
+        public decimal Total { get; set; }
     }
 }

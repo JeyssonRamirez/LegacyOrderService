@@ -3,6 +3,7 @@ using System;
 using DataAccess.Provider.SQLite.LocalKioskDBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Provider.SQLite.Migrations
 {
     [DbContext(typeof(LocalDbContext))]
-    partial class LocalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251114141734_UpdateOrderTableProductId")]
+    partial class UpdateOrderTableProductId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.22");
@@ -24,24 +27,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                         .HasColumnType("INTEGER")
                         .HasAnnotation("Sqlite:Autoincrement", true);
 
-                    b.Property<string>("CustomerName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("NewPrice")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
+                    b.Property<long?>("ProductId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("RegistrationDate")
@@ -86,7 +72,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                             Id = 1L,
                             Name = "Widget",
                             Price = 12.99m,
-                            RegistrationDate = new DateTime(2025, 11, 14, 14, 28, 3, 888, DateTimeKind.Utc).AddTicks(6224),
+                            RegistrationDate = new DateTime(2025, 11, 14, 14, 17, 33, 982, DateTimeKind.Utc).AddTicks(5806),
                             Status = 0
                         },
                         new
@@ -94,7 +80,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                             Id = 2L,
                             Name = "Gadget",
                             Price = 15.49m,
-                            RegistrationDate = new DateTime(2025, 11, 14, 14, 28, 3, 888, DateTimeKind.Utc).AddTicks(6226),
+                            RegistrationDate = new DateTime(2025, 11, 14, 14, 17, 33, 982, DateTimeKind.Utc).AddTicks(5809),
                             Status = 0
                         },
                         new
@@ -102,7 +88,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                             Id = 3L,
                             Name = "Doohickey",
                             Price = 8.75m,
-                            RegistrationDate = new DateTime(2025, 11, 14, 14, 28, 3, 888, DateTimeKind.Utc).AddTicks(6228),
+                            RegistrationDate = new DateTime(2025, 11, 14, 14, 17, 33, 982, DateTimeKind.Utc).AddTicks(5811),
                             Status = 2
                         });
                 });
@@ -111,9 +97,7 @@ namespace DataAccess.Provider.SQLite.Migrations
                 {
                     b.HasOne("LegacyOrderService.Models.Product", "Product")
                         .WithMany("Orders")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
                 });

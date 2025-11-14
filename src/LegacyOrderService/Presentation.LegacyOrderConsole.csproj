@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <None Update="orders.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

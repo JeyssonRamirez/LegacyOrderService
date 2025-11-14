@@ -7,12 +7,13 @@ namespace LegacyOrderService.Models
 
     {
         
-        public string CustomerName;
-        public string ProductName;
-        public int Quantity;
-        public decimal Price;
-        public decimal NewPrice;
-        public long? ProductId { get; set; }
+        public string CustomerName { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal NewPrice { get; set; }
+        public decimal Total { get; set; }
+        public long ProductId { get; set; }        
         public Product Product { get; set; }
     }
 }
