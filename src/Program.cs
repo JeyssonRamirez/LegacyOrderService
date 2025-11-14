@@ -17,7 +17,7 @@ namespace LegacyOrderService
 
                 if (appservice == null)
                 {
-
+                    Console.WriteLine("Welcome to Order Processor!");
                 }
                 else
                 {
