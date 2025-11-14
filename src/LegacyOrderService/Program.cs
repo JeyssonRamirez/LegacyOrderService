@@ -1,5 +1,7 @@
 using Application.Definition.IServices;
+using Core.DataTransferObject;
 using Core.DataTransferObject.Order;
+using Crosscutting.Util.Extension;
 using LegacyOrderService.Models;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,115 +17,110 @@ namespace LegacyOrderService
 
                 var appservice = serviceProvider.GetService<IOrderAppService>();
 
-                if (appservice == null)
+                _=await appservice.UpdateDatabase();
+
+
+                Console.WriteLine("Welcome to Order Processor!");
+
+                Product product = null;
+                string customerName = "";
+                int qty = 0;
+                var validCustomer = false;
+                while (!validCustomer)
                 {
-                    Console.WriteLine("Welcome to Order Processor!");
-                }
-                else
-                {
-                    Console.WriteLine("Welcome to Order Processor!");
+                    Console.WriteLine("Enter customer name:");
+                    customerName = Console.ReadLine();
 
-                    Product product = null;
-                    string customerName = "";
-                    int qty = 0;
-                    var validCustomer = false;
-                    while (!validCustomer)
+                    if (!string.IsNullOrEmpty(customerName))
                     {
-                        Console.WriteLine("Enter customer name:");
-                        customerName = Console.ReadLine();
-
-                        if (!string.IsNullOrEmpty(customerName))
-                        {
-                            validCustomer = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("The customer name is required");
-                        }
-                    }
-                    var validProduct = false;
-                    while (!validProduct)
-                    {
-                        Console.WriteLine("Enter product name:");
-                        string productName = Console.ReadLine();
-
-                        var productSearch = await appservice.GetProductByName(productName);
-
-                        if (productSearch.Success)
-                        {
-                            validProduct = true;
-                            product = productSearch.Data;
-                        }
-                        else
-                        {
-                            Console.WriteLine("The product entered doesnt exist");
-                        }
-                    }
-
-
-                    var validquantity = false;
-                    while (!validquantity)
-                    {
-                        Console.WriteLine("Enter quantity:");
-                        var quantity = Console.ReadLine();
-                        validquantity = int.TryParse(quantity, out qty);
-                        if (!validquantity)
-                        {
-                            Console.WriteLine("Invalid Quantity");
-                        }
-                        if (qty < 1)
-                        {
-                            validquantity = false;
-                            Console.WriteLine("The Quantity  should be more that 0 ");
-                        }
-                    }
-
-
-                    Console.WriteLine("Processing order...");
-
-                    var order = new ModifyOrderDTO
-                    {
-                        ActionType = ActionType.Add
-                        ,
-                        CustomerName = customerName,
-                        ProductId = product.Id,
-                        ProductName = product.Name,
-                        Quantity = qty,
-                        NewPrice = product.Price,
-                        Total = qty * product.Price,
-                    };
-
-
-
-
-                    Console.WriteLine("Customer: " + order.CustomerName);
-                    Console.WriteLine("Product: " + order.ProductName);
-                    Console.WriteLine("Quantity: " + order.Quantity);
-                    Console.WriteLine("Total: $" + order.Total);
-
-                    Console.WriteLine("Saving order to database...");
-
-                    var resultSaveOrder = await appservice.ModifyOrder(order);
-                    if (resultSaveOrder.Success)
-                    {
-                        Console.WriteLine("Order complete!");
+                        validCustomer = true;
                     }
                     else
                     {
-                        Console.WriteLine(resultSaveOrder.Message);
+                        Console.WriteLine("The customer name is required");
                     }
+                }
+                var validProduct = false;
+                while (!validProduct)
+                {
+                    Console.WriteLine("Enter product name:");
+                    string productName = Console.ReadLine();
+
+                    var productSearch = await appservice.GetProductByName(productName);
+
+                    if (productSearch.Success)
+                    {
+                        validProduct = true;
+                        product = productSearch.Data;
+                    }
+                    else
+                    {
+                        Console.WriteLine("The product entered doesnt exist");
+                    }
+                }
+
+
+                var validquantity = false;
+                while (!validquantity)
+                {
+                    Console.WriteLine("Enter quantity:");
+                    var quantity = Console.ReadLine();
+                    validquantity = int.TryParse(quantity, out qty);
+                    if (!validquantity)
+                    {
+                        Console.WriteLine("Invalid Quantity");
+                    }
+                    if (qty < 1)
+                    {
+                        validquantity = false;
+                        Console.WriteLine("The Quantity  should be more that 0 ");
+                    }
+                }
+
+
+                Console.WriteLine("Processing order...");
+
+                var order = new ModifyOrderDTO
+                {
+                    ActionType = ActionType.Add
+                    ,
+                    CustomerName = customerName,
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    Quantity = qty,
+                    NewPrice = product.Price,
+                    Total = qty * product.Price,
+                };
+                Console.WriteLine("Customer: " + order.CustomerName);
+                Console.WriteLine("Product: " + order.ProductName);
+                Console.WriteLine("Quantity: " + order.Quantity);
+                Console.WriteLine("Total: $" + order.Total);
+
+                Console.WriteLine("Saving order to database...");
+
+                var resultSaveOrder = await appservice.ModifyOrder(order);
+                if (resultSaveOrder.Success)
+                {
+                    Console.WriteLine("Order complete!");
+                }
+                else
+                {
+                    Console.WriteLine(resultSaveOrder.Message);
                 }
 
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                var message = "";
+#if Production
+				message= "An unknown error occurred.";
+#else
+                message = ex.GetDevExceptionMessage();
+#endif               
+
+                Console.WriteLine($"Error: {message}");
             }
-
-
-
-
         }
     }
 }
