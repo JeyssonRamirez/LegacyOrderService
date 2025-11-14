@@ -1,5 +1,6 @@
 ﻿using Core.GlobalRepository;
 using DataAccess.Provider.SQLite.LocalKioskDBContext;
+using DataAccess.Provider.SQLite.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
