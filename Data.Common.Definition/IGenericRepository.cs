@@ -8,15 +8,15 @@ namespace Data.Common.Definition
     {
         T AddItem(T item);
         IEnumerable<T> AddRangeOfItems(IEnumerable<T> items);
-        
+
         long Count(Expression<Func<T, bool>> filter = null);
         T GetOne(Expression<Func<T, bool>> filter, List<Expression<Func<T, object>>> includes = null);
-        
+
 
         IQueryable<T> GetAll();
         Task<IQueryable<T>> GetFiltered(Expression<Func<T, bool>> filter, List<Expression<Func<T, object>>> includes = null, bool asNoTracking = false);
         int Remove(Expression<Func<T, bool>> filter, bool logical = true);
-        
+
 
         int RemoveRange(IEnumerable<T> items, bool logical = true);
         T Update(Expression<Func<T, bool>> filter, T entity);
@@ -32,9 +32,6 @@ namespace Data.Common.Definition
 
         int ExecuteQuery(string query, List<ParameterDto> parameters, bool procedure);
         List<T> ExecuteQuery<T>(string query, List<ParameterDto> parameters, bool procedure);
-
-
-
         void CloseConnection();
         string ApplyMigrations();
         Task<bool> TableExistsAsync();

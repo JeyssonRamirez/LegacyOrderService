@@ -1,29 +1,20 @@
-using System.ComponentModel;
-
 namespace LegacyOrderService.Models
 {
-    public class Order
+    public class Order 
     {
+        public long Id;
         public string CustomerName;
         public string ProductName;
         public int Quantity;
-        public double Price;
+        public decimal Price;
+        public long ProductId { get; set; }
     }
 
-    public enum StatusType
+    public class Product:Entity
     {
-        [Description("Active")]
-        Active = 0,
-        [Description("Pending")]
-        Pending = 1,
-        [Description("Inactive")]
-        Inactive = 2,
-        [Description("Locked")]
-        Locked = 3,
-        [Description("Deleted")]
-        Deleted = 4,
-        [Description("Other")]
-        Other = 5
+        
+        public string Name { get; set; }
+        public decimal Price { get; set; }
     }
 
 

@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Definition\Application.Definition.csproj" />
+    <ProjectReference Include="..\Core.GlobalRepository\Core.GlobalRepository.csproj" />
+  </ItemGroup>
+
 </Project>

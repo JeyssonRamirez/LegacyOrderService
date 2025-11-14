@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Core.DataTransferObject\Core.DataTransferObject.csproj" />
-    <ProjectReference Include="..\Core.Entities\Core.Entities.csproj" />
-  </ItemGroup>
-
 </Project>
