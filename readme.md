@@ -4,7 +4,7 @@
 
 | Layer            | Responsibility                                                                    |
 | ---------------- | --------------------------------------------------------------------------------- |
-| **Presentation** | Console app for user input/output. Depends on `IOrderAppService`.                 |
+| **Presentation** | Console app for user input/output. Depends on `IOrderAppService`. project nenamed |
 | **Application**  | Implements methods orchestration and exposes use cases.                           |
 | **Core**         | Contains the domain entities and business logic (game rules).                     |
 | **Data**         | Handles input deck reading from console.                                          |

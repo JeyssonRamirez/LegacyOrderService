@@ -18,10 +18,4 @@
     <ProjectReference Include="..\DataAccess.Provider.SQLite\DataAccess.Provider.SQLite.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="orders.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
