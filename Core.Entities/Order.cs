@@ -3,11 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LegacyOrderService.Models
 {
-    public class Order
+    public class Order :Entity
+
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id;
+        
         public string CustomerName;
         public string ProductName;
         public int Quantity;

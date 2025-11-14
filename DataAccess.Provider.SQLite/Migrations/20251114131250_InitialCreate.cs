@@ -25,17 +25,18 @@ namespace DataAccess.Provider.SQLite.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
-                });            
+                });
+          
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Product");
         }
     }
 }
